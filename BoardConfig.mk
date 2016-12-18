@@ -88,6 +88,9 @@ BOARD_USES_QCOM_HARDWARE := true
 # ANT+
 BOARD_ANT_WIRELESS_DEVICE := "qualcomm-uart"
 
+# THP
+TARGET_SUPPORTS_THP := true
+
 # Audio
 BOARD_USES_ALSA_AUDIO := true
 
