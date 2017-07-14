@@ -140,8 +140,8 @@ PRODUCT_COPY_FILES += \
     external/ant-wireless/antradio-library/com.dsi.ant.antradio_library.xml:system/etc/permissions/com.dsi.ant.antradio_library.xml
 
 # Camera
-PRODUCT_PACKAGES += \
-    Snap
+#PRODUCT_PACKAGES += \
+#   Snap
 
 # Configpanel
 PRODUCT_PACKAGES += \
@@ -323,5 +323,9 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/wifi/WCNSS_qcom_cfg.ini:system/etc/wifi/WCNSS_qcom_cfg.ini
 
+# inherit from qcom-common
+include device/qcom/common/common.mk
+
 # Inherit from oppo-common
 $(call inherit-product, device/oppo/common/common.mk)
+I_WANT_A_QUAIL_STAR=true
