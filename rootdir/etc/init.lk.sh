@@ -15,6 +15,8 @@ function copy() {
 
 ################################################################################
 
+sleep 10
+
 on property:sys.boot_completed=1
     # Set I/O Scheduler tweaks
     write /sys/block/sda/queue/scheduler maple
