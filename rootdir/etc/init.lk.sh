@@ -1,8 +1,23 @@
-# Thanks Joe Maples <joe@frap129.org> ~~!
+#!/system/bin/sh
+
+# Thanks to Joe Maples <joe@frap129.org>
+
+################################################################################
+# helper functions to allow Android init like script
+
+function write() {
+    echo -n $2 > $1
+}
+
+function copy() {
+    cat $1 > $2
+}
+
+################################################################################
 
 on property:sys.boot_completed=1
     # Set I/O Scheduler tweaks
-    write /sys/block/sda/queue/scheduler maple 
+    write /sys/block/sda/queue/scheduler maple
     write /sys/block/sda/queue/iosched/writes_starved 4
     write /sys/block/sda/queue/iosched/fifo_batch 16
     write /sys/block/sda/queue/iosched/sync_read_expire 350
@@ -75,8 +90,8 @@ on property:sys.boot_completed=1
     write /sys/devices/system/cpu/cpu4/cpufreq/cultivation/io_is_busy 1
     write /sys/devices/system/cpu/cpu4/cpufreq/cultivation/target_loads "87 1400000:31 1600000:45 1800000:66 1900000:93"
     write /sys/devices/system/cpu/cpu4/cpufreq/cultivation/min_sample_time 19000
-    write /sys/devices/system/cpu/cpu4/cpufreq/cultivation/max_freq_hysteresis 100000	
-	
+    write /sys/devices/system/cpu/cpu4/cpufreq/cultivation/max_freq_hysteresis 100000
+
     # Configure governor settings for little cluster
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "blu_active"
     write /sys/devices/system/cpu/cpu0/cpufreq/blu_active/above_hispeed_delay 20000
@@ -104,7 +119,7 @@ on property:sys.boot_completed=1
     write /sys/devices/system/cpu/cpu4/cpufreq/blu_active/timer_slack 20000
     write /sys/devices/system/cpu/cpu4/cpufreq/blu_active/fastlane 0
     write /sys/devices/system/cpu/cpu4/cpufreq/blu_active/fastlane_threshold 50
-	
+
     # Configure governor settings for little cluster
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "interactive"
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/use_sched_load 0
@@ -118,8 +133,8 @@ on property:sys.boot_completed=1
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/min_sample_time 45000
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/max_freq_hysteresis 0
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/ignore_hispeed_on_notif 0
-	write /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_slack -1
-	write /sys/devices/system/cpu/cpu0/cpufreq/interactive/enable_prediction 1
+    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_slack -1
+    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/enable_prediction 1
 
     # Configure governor settings for big cluster
     write /sys/devices/system/cpu/cpu4/cpufreq/scaling_governor "interactive"
@@ -134,5 +149,5 @@ on property:sys.boot_completed=1
     write /sys/devices/system/cpu/cpu4/cpufreq/interactive/min_sample_time 40000
     write /sys/devices/system/cpu/cpu4/cpufreq/interactive/max_freq_hysteresis 0
     write /sys/devices/system/cpu/cpu4/cpufreq/interactive/ignore_hispeed_on_notif 0
-	write /sys/devices/system/cpu/cpu4/cpufreq/interactive/timer_slack -1
-	write /sys/devices/system/cpu/cpu4/cpufreq/interactive/enable_prediction 1
+    write /sys/devices/system/cpu/cpu4/cpufreq/interactive/timer_slack -1
+    write /sys/devices/system/cpu/cpu4/cpufreq/interactive/enable_prediction 1
