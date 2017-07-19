@@ -186,4 +186,4 @@ sys.usb.rmnet.func.name=gsi
 wifi.interface=wlan0
 
 # LegendROM
-ro.legendrom.version=17.1
+ro.legendrom.version=17.2
