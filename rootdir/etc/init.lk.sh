@@ -37,6 +37,16 @@ on property:sys.boot_completed=1
     # disable iostats
     write /sys/block/sda/queue/iostats 0
 
+	# Disable some wakelocks
+    write /sys/module/wakeup/parameters/enable_qcom_rx_wakelock_ws 0
+    write /sys/module/wakeup/parameters/enable_wlan_extscan_wl_ws 0
+    write /sys/module/wakeup/parameters/enable_ipa_ws 0
+    write /sys/module/wakeup/parameters/enable_wlan_wow_wl_ws 0
+    write /sys/module/wakeup/parameters/enable_wlan_ws 0
+    write /sys/module/wakeup/parameters/enable_timerfd_ws 0
+    write /sys/module/wakeup/parameters/enable_netlink_ws 0
+    write /sys/module/wakeup/parameters/enable_netmgr_wl_ws 0	
+
     #cpu
     write /sys/module/cpu_boost/parameters/input_boost_freq "0:1036800"
     write /sys/module/cpu_boost/parameters/input_boost_freq_s2 "0:960000"
@@ -131,12 +141,14 @@ on property:sys.boot_completed=1
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_rate 42000
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/hispeed_freq 300000
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/io_is_busy 0
-    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads "45 441600:35 672000:49 748800:60 960000:75 1036800:85 1248000:90 1478400:95 1900800:100"
+    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads "45 441600:35 672000:49 883200:60 960000:75 1094400:85 1248000:90 1478400:95 1900800:100"
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/min_sample_time 45000
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/max_freq_hysteresis 0
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/ignore_hispeed_on_notif 0
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_slack -1
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/enable_prediction 1
+    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/powersave_bias 1
+    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/screen_off_maxfreq 883200
 
     # Configure governor settings for big cluster
     write /sys/devices/system/cpu/cpu4/cpufreq/scaling_governor "interactive"
@@ -153,3 +165,5 @@ on property:sys.boot_completed=1
     write /sys/devices/system/cpu/cpu4/cpufreq/interactive/ignore_hispeed_on_notif 0
     write /sys/devices/system/cpu/cpu4/cpufreq/interactive/timer_slack -1
     write /sys/devices/system/cpu/cpu4/cpufreq/interactive/enable_prediction 1
+	write /sys/devices/system/cpu/cpu4/cpufreq/interactive/powersave_bias 1
+    write /sys/devices/system/cpu/cpu4/cpufreq/interactive/screen_off_maxfreq 1056000
