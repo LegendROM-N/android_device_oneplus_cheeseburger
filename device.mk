@@ -342,6 +342,19 @@ PRODUCT_PACKAGES += \
     wpa_supplicant \
     wpa_supplicant.conf
 
+# USB
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+    sys.usb.config=mtp,adb \
+    persist.sys.isUsbOtgEnabled=true \
+    persist.sys.usb.config=mtp,adb \
+    ro.adb.secure=0
+
+# OTA
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.ota.romname=LegendROM \
+    persist.ota.version=20170918 \
+    persist.ota.manifest=https://raw.githubusercontent.com/LegendROM-N/android_extras_ota/cm-14.1/cheeseburger.xml
+
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/wifi/hostapd_default.conf:system/etc/hostapd/hostapd_default.conf \
     $(LOCAL_PATH)/wifi/hostapd.accept:system/etc/hostapd/hostapd.accept \
@@ -350,5 +363,10 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/wifi/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf \
     $(LOCAL_PATH)/wifi/WCNSS_qcom_cfg.ini:system/etc/wifi/WCNSS_qcom_cfg.ini
 
+# inherit from qcom-common
+include device/qcom/common/common.mk
+
 # Inherit from oppo-common
 $(call inherit-product, device/oppo/common/common.mk)
+I_WANT_A_QUAIL_STAR=true
+
