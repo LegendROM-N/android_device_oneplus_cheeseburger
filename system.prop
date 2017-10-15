@@ -200,4 +200,4 @@ persist.radio.calls.on.ims=1
 wifi.interface=wlan0
 
 # LegendROM
-ro.legendrom.version=18.0
+ro.legendrom.version=19.0

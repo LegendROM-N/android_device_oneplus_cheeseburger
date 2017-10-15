@@ -153,8 +153,8 @@ PRODUCT_COPY_FILES += \
 
 #<<<<<<< HEAD
 # Camera
-PRODUCT_PACKAGES += \
-    Snap
+#PRODUCT_PACKAGES += \
+#    Snap
 
 #=======
 #>>>>>>> 3c29771... device: Add OnePlus prebuilts and move GoogleCamera
@@ -302,6 +302,8 @@ PRODUCT_PACKAGES += \
     init.qcom.usb.configfs.rc \
     init.qcom.usb.rc \
     init.qcom.usb.sh \
+    init.spectrum.rc \
+    init.spectrum.sh \
     init.target.rc \
     ueventd.qcom.rc
 
@@ -354,7 +356,7 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 # OTA
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.ota.romname=LegendROM \
-    persist.ota.version=20170918 \
+    persist.ota.version=20171015 \
     persist.ota.manifest=https://raw.githubusercontent.com/LegendROM-N/android_extras_ota/cm-14.1/cheeseburger.xml
 
 PRODUCT_COPY_FILES += \
