@@ -356,7 +356,7 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 # OTA
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.ota.romname=LegendROM \
-    persist.ota.version=20171015 \
+    persist.ota.version=20171021 \
     persist.ota.manifest=https://raw.githubusercontent.com/LegendROM-N/android_extras_ota/cm-14.1/cheeseburger.xml
 
 PRODUCT_COPY_FILES += \
